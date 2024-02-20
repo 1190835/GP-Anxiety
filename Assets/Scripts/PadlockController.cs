@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.Linq;
 
 public class PadlockController : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class PadlockController : MonoBehaviour
     //Numero de slots q pararam de rodar
     public int stoppedIdx =0;
     float speed = 0.01f;
-    private float [] faceRotations = {108, 144, 180, 216, 252, -72, -36, 0, 36, 72};
+    private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
     private int[] combination = {1,2,3,4,5};
     public int[] input = new int[5];
+    public bool gameEnd = false;
+    public GameObject camera;
+    public Animator anim;
 
     //36
 
@@ -23,8 +27,6 @@ public class PadlockController : MonoBehaviour
             rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed);
             
         }
-        
-
         if(Input.GetKeyDown(KeyCode.Mouse0) && stoppedIdx<=4){
             alignRound(stoppedIdx);
             stoppedIdx++;
@@ -40,17 +42,32 @@ public class PadlockController : MonoBehaviour
             Vector3 rotate = rounds[i].transform.rotation.eulerAngles;
             rotate = new Vector3((float)(Math.Round(rotate.x / 36) * 36), rotate.y, rotate.z);
             rounds[i].transform.rotation = Quaternion.Euler(rotate);
+            float angle = getRelativeAngle(rounds[i].transform.forward,camera.transform.forward);
+            angle = (float)Math.Round(angle);
+            input[i]=Array.IndexOf(faceRotations,angle);
+            Debug.Log("Angle: "+angle+", Number: "+input[i]);
     }
 
-    private bool checkCode(){
-        for(int i =0;i<5;i++){
-            input[i] = Array.IndexOf(faceRotations,(float)Math.Round(rounds[i].transform.localRotation.x));
-            Debug.Log((float)Math.Round(rounds[i].transform.localRotation.x*360));
+    private float getRelativeAngle(Vector3 va, Vector3 vb){
+        float angle = Vector3.Angle(va,vb);
+        Vector3 cross = Vector3.Cross(va,vb);
+        if(cross.x<0){
+            angle = -angle;
         }
-        foreach(int i in input){
-            Debug.Log(i.ToString());
+        return angle;
+    }
+
+    private void checkCode(){
+        if(Enumerable.SequenceEqual(input, combination)){
+            Debug.Log("Correct code");
+            anim.SetBool("Open",true);
+            this.enabled=false;
         }
-        stoppedIdx=0;
-        return input.Equals(combination);
+        else{
+            stoppedIdx=0;
+            for(int i =0; i<input.Length;i++){
+                input[i]=-1;
+            }
+        }
     }
 }
