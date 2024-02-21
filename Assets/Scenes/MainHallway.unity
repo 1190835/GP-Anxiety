@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1ed18def31f0c7c43819010faffd157e, type: 2}
+    - target: {fileID: 359312179909449575, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
       propertyPath: m_Name
       value: MainHallway
