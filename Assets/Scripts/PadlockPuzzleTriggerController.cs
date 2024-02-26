@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RingPuzzleTriggerController : MonoBehaviour, IInteractible
+public class PadlockPuzzleTriggerController : MonoBehaviour, IInteractible
 {
     public void Interact(){
-        SceneManager.LoadScene("RingGame");
+        SceneManager.LoadScene("PadlockPuzzle");
     }
 }

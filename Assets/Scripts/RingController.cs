@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RingController : MonoBehaviour
 {
@@ -8,22 +10,47 @@ public class RingController : MonoBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
 
+    //Numero de vezes que o jogador cometeu um erro
+    public int failCounter;
+    //Tempo minimo entre erros (para eliminar erros repetidos)
+    private float failCooldown = 1.5f;
+    //Contador do tempo entre erros
+    public float failTimeout;
+    //Tempo decorrido
+    public float timer;
     void Start()
     {
         startPosition=transform.position;
         startRotation=transform.rotation;
         Cursor.lockState=CursorLockMode.Locked;
+        timer = 0f;
+        failTimeout=0f;
+        failCounter=0;
     }
     void Update()
     {
+        failTimeout-=Time.deltaTime;
+        timer+=Time.deltaTime;
+
+        //Bloquear a rotacao do anel no eixo X
         transform.rotation=Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
+
+        //Movimento do anel em world coordinates, nao em relacao a posicao/orientacao do anel
         if(Input.GetMouseButton(0)){
             Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
             transform.Translate(m_Input*Time.deltaTime*10,Space.World);
             //Debug.Log(m_Input.ToString());
         }
+
+        //Bloquear movimento para o limite esquerdo do puzzle
+        if(transform.position.x<startPosition.x){
+            transform.position=startPosition;
+        }
         rotate();
     }
+
+    //Da cast de um raio ao longo do buraco do anel, ao colidir com a mesh do tubo, usa a normal da colisao para rodar o anel para ser sempre
+    //perpendicular ao tubo
     void rotate(){
         RaycastHit hit;
         Vector3 fwd = raycastpoint.transform.TransformDirection(Vector3.forward)*1000;
@@ -37,8 +64,23 @@ public class RingController : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter(){
+
+    //Chamado quando o anel colide com um collider. Neste caso pode ser o tubo ou a "finish area"
+    //No caso do tubo, a posicao do anel e reset para o inicio e o erro e contabilizado
+    //No caso da finish area, o puzzle acaba
+    private void OnTriggerEnter(Collider other){
+        if(other.tag=="Finish"){
+            this.enabled=false;
+            SceneManager.LoadScene("SideHallway");
+            return;
+        }
         transform.position=startPosition;
         transform.rotation=startRotation;
+        //Erro cooldown check
+        if(failTimeout<=0){
+            //Incrementar erros e iniciar cooldown
+            failCounter++;
+            failTimeout=failCooldown;
+        }
     }
 }

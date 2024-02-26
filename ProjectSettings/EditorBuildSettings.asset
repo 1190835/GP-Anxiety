@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainHallway.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/RingGame.unity
+    guid: a3db71bb37a8bfe4a88820db2c12b54b
+  - enabled: 1
+    path: Assets/Scenes/SideHallway.unity
+    guid: c16c924c973676945ac8af5edb937060
+  - enabled: 1
+    path: Assets/Scenes/PadlockPuzzle.unity
+    guid: 1e3fe328a0466c04ca762b39927cf2cc
+  - enabled: 1
+    path: Assets/Scenes/Room.unity
+    guid: 490be846df494d24494e09650da14321
   m_configObjects: {}

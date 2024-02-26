@@ -734,14 +734,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 999404285501708131, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1438513758}
+      addedObject: {fileID: 1438513759}
   m_SourcePrefab: {fileID: 100100000, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
 --- !u!1 &1438513757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 999404285501708131, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
   m_PrefabInstance: {fileID: 1438513756}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1438513758
+--- !u!114 &1438513759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -750,10 +750,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1438513757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523fc9bdcc2f3b74b9b481e1915459dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 711f28f86f3d6594a976d72d387d90de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleCanvas: {fileID: 1554157450}
 --- !u!1 &1511433833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

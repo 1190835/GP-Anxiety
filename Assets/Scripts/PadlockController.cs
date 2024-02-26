@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PadlockController : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class PadlockController : MonoBehaviour
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             this.enabled=false;
+            SceneManager.LoadScene("Room");
         }
         else{
             stoppedIdx=0;
