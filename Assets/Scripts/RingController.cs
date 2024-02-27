@@ -18,6 +18,8 @@ public class RingController : MonoBehaviour
     public float failTimeout;
     //Tempo decorrido
     public float timer;
+    public AudioClip doorOpenSFX;
+    public AudioSource audioSource;
     void Start()
     {
         startPosition=transform.position;
@@ -71,7 +73,9 @@ public class RingController : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if(other.tag=="Finish"){
             this.enabled=false;
-            SceneManager.LoadScene("SideHallway");
+            audioSource.PlayOneShot(doorOpenSFX);
+            //Mudar de cena quando o SFX tiver acabado de tocar
+            Invoke("ChangeScene",doorOpenSFX.length);
             return;
         }
         transform.position=startPosition;
@@ -82,5 +86,10 @@ public class RingController : MonoBehaviour
             failCounter++;
             failTimeout=failCooldown;
         }
+    }
+
+    private void ChangeScene(){
+        Debug.Log("changing scenes");
+        SceneManager.LoadScene("SideHallway");
     }
 }

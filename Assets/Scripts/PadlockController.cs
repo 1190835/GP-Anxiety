@@ -59,7 +59,7 @@ public class PadlockController : MonoBehaviour
     }
 
     private void checkCode(){
-        if(Enumerable.SequenceEqual(input, combination)){
+        if(!Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             this.enabled=false;
