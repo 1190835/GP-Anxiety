@@ -19,8 +19,10 @@ public class PadlockController : MonoBehaviour
     public bool gameEnd = false;
     public GameObject camera;
     public Animator anim;
-
-    //36
+    public AudioClip doorOpenSFX;
+    public AudioClip padlockUnlockSFX;
+    public AudioSource audioSource;
+    public AudioSource padlockAudioSource;
 
     void Update(){
         //De cima para baixo, faz rodar todos os slots q ainda nao pararam (4->0)
@@ -63,7 +65,9 @@ public class PadlockController : MonoBehaviour
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             this.enabled=false;
-            SceneManager.LoadScene("Room");
+            padlockAudioSource.PlayOneShot(padlockUnlockSFX);
+            audioSource.PlayOneShot(doorOpenSFX);
+            Invoke("ChangeScene",doorOpenSFX.length);
         }
         else{
             stoppedIdx=0;
@@ -71,5 +75,9 @@ public class PadlockController : MonoBehaviour
                 input[i]=-1;
             }
         }
+    }
+    private void ChangeScene(){
+        Debug.Log("changing scenes");
+        SceneManager.LoadScene("Room");
     }
 }

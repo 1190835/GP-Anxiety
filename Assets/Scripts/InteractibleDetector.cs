@@ -22,17 +22,18 @@ public class InteractibleDetector : MonoBehaviour
         if(camera!=null){
             RaycastHit hit;
             Vector3 fwd = camera.transform.TransformDirection(Vector3.forward)*100;
-            //Debug.DrawRay(camera.transform.position,fwd,Color.green);
-            if(Physics.Raycast(camera.transform.position,fwd,out hit, 10)){
+            Debug.DrawRay(camera.transform.position,fwd,Color.green);
+            if(Physics.Raycast(camera.transform.position,fwd,out hit, 100)){
                 if(hit.collider.tag=="Interactible"){
+                    Debug.Log(hit.collider.name);
                     interactIcon.SetActive(true);
                     if(Input.GetKey(KeyCode.Mouse0)){
                         hit.collider.GetComponent<IInteractible>().Interact();
                     }
                 }
-            }
-            else{
-                interactIcon.SetActive(false);
+                else{
+                    interactIcon.SetActive(false);
+                }
             }
         }
         
