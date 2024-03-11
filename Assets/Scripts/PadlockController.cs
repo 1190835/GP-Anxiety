@@ -12,7 +12,7 @@ public class PadlockController : MonoBehaviour
 
     //Numero de slots q pararam de rodar
     public int stoppedIdx =0;
-    float speed = 0.01f;
+    float speed = 1.5f;
     private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
     private int[] combination = {1,2,3,4,5};
     public int[] input = new int[5];
@@ -27,7 +27,7 @@ public class PadlockController : MonoBehaviour
     void Update(){
         //De cima para baixo, faz rodar todos os slots q ainda nao pararam (4->0)
         for(int i=4; i>=stoppedIdx;i--){
-            rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed);
+            rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed*Time.deltaTime);
             
         }
         if(Input.GetKeyDown(KeyCode.Mouse0) && stoppedIdx<=4){
