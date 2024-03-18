@@ -60,7 +60,7 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
         
         Vector2 outputPosition = ApplyInversionFilter(clampedPosition);
 
-        OutputPointerEventValue(outputPosition * magnitudeMultiplier);
+        OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.deltaTime);
     }
 
     public void OnPointerUp(PointerEventData eventData)
