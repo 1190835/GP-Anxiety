@@ -20,6 +20,8 @@ public class RingController : MonoBehaviour
     public float timer;
     public AudioClip doorOpenSFX;
     public AudioSource audioSource;
+
+    public Vector2 moveDirection;
     void Start()
     {
         startPosition=transform.position;
@@ -38,8 +40,9 @@ public class RingController : MonoBehaviour
         transform.rotation=Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
 
         //Movimento do anel em world coordinates, nao em relacao a posicao/orientacao do anel
-        if(Input.GetMouseButton(0)){
-            Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
+        if(moveDirection!=Vector2.zero){
+            //Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
+            Vector3 m_Input = new Vector3(moveDirection.x, moveDirection.y,0);
             transform.Translate(m_Input*Time.deltaTime*10,Space.World);
             //Debug.Log(m_Input.ToString());
         }
@@ -91,5 +94,9 @@ public class RingController : MonoBehaviour
     private void ChangeScene(){
         Debug.Log("changing scenes");
         SceneManager.LoadScene("SideHallway");
+    }
+
+    public void VirtualMoveInput(Vector2 virtualMoveDirection){
+        moveDirection=virtualMoveDirection;
     }
 }

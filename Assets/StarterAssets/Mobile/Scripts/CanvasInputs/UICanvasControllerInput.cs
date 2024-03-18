@@ -18,14 +18,14 @@ namespace StarterAssets
             starterAssetsInputs.LookInput(virtualLookDirection);
         }
 
-        public void VirtualJumpInput(bool virtualJumpState)
+        public void VirtualInteractInput(bool virtualJumpState)
         {
-            starterAssetsInputs.JumpInput(virtualJumpState);
+            starterAssetsInputs.InteractInput(virtualJumpState);
         }
 
-        public void VirtualSprintInput(bool virtualSprintState)
+        public void VirtualFlashInput(bool virtualSprintState)
         {
-            starterAssetsInputs.SprintInput(virtualSprintState);
+            starterAssetsInputs.FlashInput(virtualSprintState);
         }
         
     }

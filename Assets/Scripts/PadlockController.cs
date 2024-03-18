@@ -17,6 +17,7 @@ public class PadlockController : MonoBehaviour
     private int[] combination = {1,2,3,4,5};
     public int[] input = new int[5];
     public bool gameEnd = false;
+    public bool pressed = false;
     public GameObject camera;
     public Animator anim;
     public AudioClip doorOpenSFX;
@@ -30,7 +31,7 @@ public class PadlockController : MonoBehaviour
             rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed*Time.deltaTime);
             
         }
-        if(Input.GetKeyDown(KeyCode.Mouse0) && stoppedIdx<=4){
+        if(pressed && stoppedIdx<=4){
             alignRound(stoppedIdx);
             stoppedIdx++;
         }
@@ -38,6 +39,8 @@ public class PadlockController : MonoBehaviour
             checkCode();
         }
     }
+
+
 
     private void alignRound(int i){
             //Se um slot esta parado arredonda a rotation para o multiplo mais proximo de 36, para que uma face esteja sempre virada para
@@ -79,5 +82,9 @@ public class PadlockController : MonoBehaviour
     private void ChangeScene(){
         Debug.Log("changing scenes");
         SceneManager.LoadScene("Room");
+    }
+
+    public void VirtualPressInput(bool virtualPressed){
+        pressed=virtualPressed;
     }
 }
