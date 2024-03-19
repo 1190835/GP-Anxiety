@@ -24,6 +24,8 @@ public class PadlockController : MonoBehaviour
     public AudioClip padlockUnlockSFX;
     public AudioSource audioSource;
     public AudioSource padlockAudioSource;
+    public int failCounter=0;
+    public float timer=0f;
 
     void Update(){
         //De cima para baixo, faz rodar todos os slots q ainda nao pararam (4->0)
@@ -31,13 +33,14 @@ public class PadlockController : MonoBehaviour
             rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed*Time.deltaTime);
             
         }
-        if(pressed && stoppedIdx<=4){
+        if(Input.GetTouch(0).phase==TouchPhase.Began && stoppedIdx<=4){
             alignRound(stoppedIdx);
             stoppedIdx++;
         }
         if(stoppedIdx>4){
             checkCode();
         }
+        timer+=Time.deltaTime;
     }
 
 
@@ -67,6 +70,7 @@ public class PadlockController : MonoBehaviour
         if(!Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
             this.enabled=false;
             padlockAudioSource.PlayOneShot(padlockUnlockSFX);
             audioSource.PlayOneShot(doorOpenSFX);
@@ -77,11 +81,16 @@ public class PadlockController : MonoBehaviour
             for(int i =0; i<input.Length;i++){
                 input[i]=-1;
             }
+            failCounter++;
         }
     }
     private void ChangeScene(){
         Debug.Log("changing scenes");
+        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            SceneManager.LoadScene("SideHallwayOtherworld");
+        }
         SceneManager.LoadScene("Room");
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
     public void VirtualPressInput(bool virtualPressed){

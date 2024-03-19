@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767772227563435448, guid: c82978c3789dad44da354dc354c782b2, type: 3}
       propertyPath: magnitudeMultiplier
-      value: 0.05
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4767772227563435448, guid: c82978c3789dad44da354dc354c782b2, type: 3}
       propertyPath: touchZoneOutputEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1255,7 +1255,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30

@@ -75,6 +75,7 @@ public class RingController : MonoBehaviour
     //No caso da finish area, o puzzle acaba
     private void OnTriggerEnter(Collider other){
         if(other.tag=="Finish"){
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().saveRingMetrics(failCounter,timer);
             this.enabled=false;
             audioSource.PlayOneShot(doorOpenSFX);
             //Mudar de cena quando o SFX tiver acabado de tocar
@@ -93,7 +94,13 @@ public class RingController : MonoBehaviour
 
     private void ChangeScene(){
         Debug.Log("changing scenes");
-        SceneManager.LoadScene("SideHallway");
+        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            SceneManager.LoadScene("MainHallwayOtherworld");
+        }
+        else{
+            SceneManager.LoadScene("SideHallway");
+        }
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
     public void VirtualMoveInput(Vector2 virtualMoveDirection){

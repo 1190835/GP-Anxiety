@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 593346031307489181, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
       propertyPath: magnitudeMultiplier
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1457108736632224731, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
       propertyPath: m_Name
@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: buttonStateOutputEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7325739534687642245, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
+      propertyPath: magnitudeMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7994771040921668825, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
       propertyPath: m_Name
       value: UI_Virtual_Button_Interact
@@ -261,6 +265,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8803517679608742270, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
       propertyPath: m_Name
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803517679608742270, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
+      propertyPath: m_TagString
       value: UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -274,6 +282,11 @@ PrefabInstance:
 --- !u!224 &82714308 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3447417908108895600, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
+  m_PrefabInstance: {fileID: 82714307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &82714309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1457108736632224731, guid: 7484ce6f8ca3d81408c606b5ae8b9ff3, type: 3}
   m_PrefabInstance: {fileID: 82714307}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &186886660 stripped
@@ -854,13 +867,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 7.29
       objectReference: {fileID: 0}
+    - target: {fileID: 6350294512861331932, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: flashButton
+      value: 
+      objectReference: {fileID: 82714309}
     - target: {fileID: 8126333458750645146, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: MoveSpeed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: footsteps
@@ -1406,9 +1423,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorClose1: {fileID: 8300000, guid: 7a53742f9d3653648b2ae052a71f747b, type: 3}
   doorClose2: {fileID: 8300000, guid: f392d9452d696ef4a8ad7ae88ee6fea9, type: 3}
+  flashButton: {fileID: 82714309}
   roomIdx: 0
   hasKey: 0
   hasCamera: 0
+  cameraClicks: 0
+  gameTime: 0
+  firstStageTime: 0
+  ringTime1: 0
+  ringTime2: 0
+  padlockTime1: 0
+  padlockTime2: 0
+  ringFails1: 0
+  ringFails2: 0
+  padlockFails1: 0
+  padlockFails2: 0
 --- !u!4 &2070335196
 Transform:
   m_ObjectHideFlags: 0

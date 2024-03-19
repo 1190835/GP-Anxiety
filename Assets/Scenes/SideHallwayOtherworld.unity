@@ -639,6 +639,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943951918}
   m_CullTransparentMesh: 1
+--- !u!1 &1077640744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077640747}
+  - component: {fileID: 1077640746}
+  - component: {fileID: 1077640745}
+  m_Layer: 0
+  m_Name: puzzleCollider
+  m_TagString: Interactible
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1077640745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077640744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523fc9bdcc2f3b74b9b481e1915459dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1077640746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077640744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.253807, y: 1, z: 1}
+  m_Center: {x: -5.0288506, y: 0, z: 0}
+--- !u!4 &1077640747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077640744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.3, y: 3.39, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1438513756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -731,29 +797,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: -5568371526223589888, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 999404285501708131, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1438513758}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
---- !u!1 &1438513757 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 999404285501708131, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
-  m_PrefabInstance: {fileID: 1438513756}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1438513758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438513757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523fc9bdcc2f3b74b9b481e1915459dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleCanvas: {fileID: 1554157450}
 --- !u!1 &1511433833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -772,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactIcon: {fileID: 612289672}
+  interactButton: {fileID: 0}
 --- !u!1 &1554157450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,3 +1129,4 @@ SceneRoots:
   - {fileID: 473305643}
   - {fileID: 1438513756}
   - {fileID: 1740838201}
+  - {fileID: 1077640747}
