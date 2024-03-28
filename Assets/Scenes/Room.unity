@@ -1591,6 +1591,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6350294512861331932, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 557518371}
+    - target: {fileID: 6350294512861331932, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: flashButton
       value: 
       objectReference: {fileID: 1522476099}

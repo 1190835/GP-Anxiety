@@ -6,7 +6,7 @@ using StarterAssets;
 public class FlashController : MonoBehaviour
 {
     public Animation anim;
-    private StarterAssetsInputs _input;
+    public StarterAssetsInputs _input;
     public GameObject flashButton;
     void Start(){
         _input = GetComponent<StarterAssetsInputs>();

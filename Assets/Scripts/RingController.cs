@@ -100,7 +100,7 @@ public class RingController : MonoBehaviour
         else{
             SceneManager.LoadScene("SideHallway");
         }
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
+        //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
     public void VirtualMoveInput(Vector2 virtualMoveDirection){

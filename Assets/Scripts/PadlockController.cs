@@ -90,7 +90,7 @@ public class PadlockController : MonoBehaviour
             SceneManager.LoadScene("SideHallwayOtherworld");
         }
         SceneManager.LoadScene("Room");
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
+        //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
     public void VirtualPressInput(bool virtualPressed){
