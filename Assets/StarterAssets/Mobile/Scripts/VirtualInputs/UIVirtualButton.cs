@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class UIVirtualButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+public class UIVirtualButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler//, IPointerClickHandler
 {
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
@@ -23,19 +23,21 @@ public class UIVirtualButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         OutputButtonStateValue(false);
     }
     
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        OutputButtonClickEvent();
-    }
+    // public void OnPointerClick(PointerEventData eventData)
+    // {
+    //     OutputButtonClickEvent();
+    // }
 
     void OutputButtonStateValue(bool buttonState)
     {
         buttonStateOutputEvent.Invoke(buttonState);
+        Debug.Log("piorca2");
     }
 
-    void OutputButtonClickEvent()
-    {
-        buttonClickOutputEvent.Invoke();
-    }
+    // void OutputButtonClickEvent()
+    // {
+    //     buttonClickOutputEvent.Invoke();
+    //     Debug.Log("piorca");
+    // }
 
 }

@@ -9,7 +9,7 @@ public class FlashController : MonoBehaviour
     public StarterAssetsInputs _input;
     public GameObject flashButton;
     void Start(){
-        _input = GetComponent<StarterAssetsInputs>();
+        //_input = GetComponent<StarterAssetsInputs>();
     }
 
     // Update is called once per frame

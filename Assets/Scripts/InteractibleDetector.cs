@@ -36,6 +36,8 @@ public class InteractibleDetector : MonoBehaviour
                     // }
                     if(_input.interact){
                         hit.collider.GetComponent<IInteractible>().Interact();
+                        //failsafe. em casos onde interagir com o objeto faz com que o objeto desapareca (collectibles), o botao de interagir desaparece -> n ha button up event -> interact fica stuck em true. isto forca o interact a mudar para false
+                        _input.InteractInput(false);
                     }
                 }
                 else{
