@@ -26,7 +26,7 @@ public class InteractibleDetector : MonoBehaviour
             RaycastHit hit;
             Vector3 fwd = camera.transform.TransformDirection(Vector3.forward)*20;
             Debug.DrawRay(camera.transform.position,fwd,Color.green);
-            if(Physics.Raycast(camera.transform.position,fwd,out hit, 100)){
+            if(Physics.Raycast(camera.transform.position,fwd,out hit, 20)){
                 if(hit.collider.tag=="Interactible"){
                     Debug.Log(hit.collider.name);
                     interactIcon.SetActive(true);
