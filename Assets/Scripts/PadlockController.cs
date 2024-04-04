@@ -89,7 +89,9 @@ public class PadlockController : MonoBehaviour
         if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
             SceneManager.LoadScene("SideHallwayOtherworld");
         }
-        SceneManager.LoadScene("Room");
+        else{
+            SceneManager.LoadScene("Room");
+        }
         //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 

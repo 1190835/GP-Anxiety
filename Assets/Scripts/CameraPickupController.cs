@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraPickupController : MonoBehaviour, IInteractible
 {
-    public GameObject doorLoad;
+    public GameObject lockedDoorTrigger;
     public GameObject doorLoadTrigger;
     public void Interact(){
         //Give the player the camera
@@ -13,7 +13,7 @@ public class CameraPickupController : MonoBehaviour, IInteractible
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().saveFirstStageTime();
 
         //Unlock door
-        doorLoad.GetComponent<LockedDoorTriggerController>().enabled=false;
+        lockedDoorTrigger.SetActive(false);
         doorLoadTrigger.SetActive(true);
 
         this.gameObject.SetActive(false);
