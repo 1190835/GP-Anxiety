@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,9 +24,13 @@ public class GameManager : MonoBehaviour
     public int ringFails2;
     public int padlockFails1;
     public int padlockFails2;
+    public int[] padlockCode1 = new int[5];
+    public int [] padlockCode2 = new int[5];
     private void Awake(){
         DontDestroyOnLoad(transform.gameObject);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         GameObject.FindGameObjectWithTag("Music").GetComponent<AmbientMusicController>().updateBackgroundAudio(roomIdx);
+        GeneratePadlockCodes();
     }
     void Start(){
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -46,6 +51,14 @@ public class GameManager : MonoBehaviour
             if(roomIdx==4){
                 src.PlayOneShot(doorClose2);
             }
+        }
+    }
+
+    private void GeneratePadlockCodes(){
+        Random rnd = new Random();
+        for(int i=0;i<padlockCode1.Length;i++){
+            padlockCode1[i]=rnd.Next(9);
+            padlockCode2[i]=rnd.Next(9);
         }
     }
 
