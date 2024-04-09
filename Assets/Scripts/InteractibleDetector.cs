@@ -28,7 +28,7 @@ public class InteractibleDetector : MonoBehaviour
             Debug.DrawRay(camera.transform.position,fwd,Color.green);
             if(Physics.Raycast(camera.transform.position,fwd,out hit, 20)){
                 if(hit.collider.tag=="Interactible"){
-                    Debug.Log(hit.collider.name);
+                    //Debug.Log(hit.collider.name);
                     interactIcon.SetActive(true);
                     interactButton.SetActive(true);
                     // if(Input.GetKey(KeyCode.Mouse0)){

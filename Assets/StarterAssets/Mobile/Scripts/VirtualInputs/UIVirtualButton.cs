@@ -31,13 +31,11 @@ public class UIVirtualButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     void OutputButtonStateValue(bool buttonState)
     {
         buttonStateOutputEvent.Invoke(buttonState);
-        Debug.Log("piorca2");
     }
 
     // void OutputButtonClickEvent()
     // {
     //     buttonClickOutputEvent.Invoke();
-    //     Debug.Log("piorca");
     // }
 
 }

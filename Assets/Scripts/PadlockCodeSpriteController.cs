@@ -10,7 +10,7 @@ public class PadlockCodeSpriteController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 2){
+        if(SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 5){
             code=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode1;
         }
         else if(SceneManager.GetActiveScene().buildIndex==4){
