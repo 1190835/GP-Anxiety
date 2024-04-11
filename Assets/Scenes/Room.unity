@@ -1936,6 +1936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockedDoorTrigger: {fileID: 1553692117}
   doorLoadTrigger: {fileID: 647343559}
+  padlockCodeSprites: {fileID: 508673476}
 --- !u!65 &1521338029
 BoxCollider:
   m_ObjectHideFlags: 0

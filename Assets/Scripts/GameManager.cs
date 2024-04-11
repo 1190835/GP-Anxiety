@@ -90,6 +90,9 @@ public class GameManager : MonoBehaviour
             padlockTime1=time;
         }
     }
+    public void incrementFlashCount(){
+        cameraClicks++;
+    }
     public void hideUI(){
         GameObject.FindGameObjectWithTag("UI").SetActive(false);
     }

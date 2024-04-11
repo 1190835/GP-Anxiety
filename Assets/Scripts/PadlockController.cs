@@ -33,9 +33,12 @@ public class PadlockController : MonoBehaviour
             rounds[i].transform.rotation = Quaternion.Lerp(rounds[i].transform.rotation, rounds[i].transform.rotation * Quaternion.Euler(90, 0, 0), speed*Time.deltaTime);
             
         }
-        if(Input.GetTouch(0).phase==TouchPhase.Began && stoppedIdx<=4){
-            alignRound(stoppedIdx);
-            stoppedIdx++;
+        if(Input.touchCount>0){
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase==TouchPhase.Began && stoppedIdx<=4){
+                alignRound(stoppedIdx);
+                stoppedIdx++;
+            }
         }
         if(stoppedIdx>4){
             checkCode();
