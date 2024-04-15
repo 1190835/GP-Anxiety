@@ -19,6 +19,7 @@ public class RingController : MonoBehaviour
     //Tempo decorrido
     public float timer;
     public AudioClip doorOpenSFX;
+    public AudioClip failSFX;
     public AudioSource audioSource;
 
     public Vector2 moveDirection;
@@ -90,6 +91,7 @@ public class RingController : MonoBehaviour
             failCounter++;
             failTimeout=failCooldown;
         }
+        audioSource.PlayOneShot(failSFX);
     }
 
     private void ChangeScene(){

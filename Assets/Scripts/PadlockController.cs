@@ -22,6 +22,7 @@ public class PadlockController : MonoBehaviour
     public Animator anim;
     public AudioClip doorOpenSFX;
     public AudioClip padlockUnlockSFX;
+    public AudioClip failSFX;
     public AudioSource audioSource;
     public AudioSource padlockAudioSource;
     public int failCounter=0;
@@ -70,7 +71,7 @@ public class PadlockController : MonoBehaviour
     }
 
     private void checkCode(){
-        if(!Enumerable.SequenceEqual(input, combination)){
+        if(Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
@@ -85,6 +86,7 @@ public class PadlockController : MonoBehaviour
                 input[i]=-1;
             }
             failCounter++;
+            audioSource.PlayOneShot(failSFX);
         }
     }
     private void ChangeScene(){
@@ -100,5 +102,14 @@ public class PadlockController : MonoBehaviour
 
     public void VirtualPressInput(bool virtualPressed){
         pressed=virtualPressed;
+    }
+    public void returnToPreviousScene(){
+        Debug.Log("changing scenes");
+        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            SceneManager.LoadScene("Room");
+        }
+        else{
+            SceneManager.LoadScene("SideHallway");
+        }
     }
 }
