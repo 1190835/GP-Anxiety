@@ -28,6 +28,18 @@ public class PadlockController : MonoBehaviour
     public int failCounter=0;
     public float timer=0f;
 
+    void Start(){
+        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime2;
+            failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails2;
+        }
+        else{
+            timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime1;
+            failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails1;
+        }
+        
+    }
+
     void Update(){
         //De cima para baixo, faz rodar todos os slots q ainda nao pararam (4->0)
         for(int i=4; i>=stoppedIdx;i--){
@@ -71,7 +83,7 @@ public class PadlockController : MonoBehaviour
     }
 
     private void checkCode(){
-        if(Enumerable.SequenceEqual(input, combination)){
+        if(!Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
@@ -104,6 +116,7 @@ public class PadlockController : MonoBehaviour
         pressed=virtualPressed;
     }
     public void returnToPreviousScene(){
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
         Debug.Log("changing scenes");
         if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
             SceneManager.LoadScene("Room");
