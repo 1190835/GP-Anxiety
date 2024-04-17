@@ -13,12 +13,17 @@ public class PadlockController : MonoBehaviour
     //Numero de slots q pararam de rodar
     public int stoppedIdx =0;
     float speed = 1.5f;
+    //Este array guarda as rotations dos cilindros que correspondem a um certo digito estar virado para a camera
+    //Por ordem numerica 0->9
+    //Isto e essencial para saber que combinacao o jogador introduziu. Tende a deixar de funcionar randomly. N sei pq. Hj funciona
     private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
     private int[] combination = {1,2,3,4,5};
     public int[] input = new int[5];
-    public bool gameEnd = false;
+    //public bool gameEnd = false;
     public bool pressed = false;
     public GameObject camera;
+
+    //Padlock open animation
     public Animator anim;
     public AudioClip doorOpenSFX;
     public AudioClip padlockUnlockSFX;
@@ -28,6 +33,7 @@ public class PadlockController : MonoBehaviour
     public int failCounter=0;
     public float timer=0f;
 
+    //No caso do jogador estar a entrar no puzzle pela segunda vez, retomar o progresso salvo anteriormente
     void Start(){
         if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
             timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime2;
@@ -73,6 +79,10 @@ public class PadlockController : MonoBehaviour
             Debug.Log("Angle: "+angle+", Number: "+input[i]);
     }
 
+    //Traduz o angulo in-engine do cilindro para o angulo relativo ao vetor forward da camera
+    //Porque o unity da handle dos angulos de rotation de uma forma que trabalha contra o nosso objetivo
+    //Assim obtemos a informacao que queremos sempre (exceto quando nao funciona)
+    //Se o padlock puzzle nao estiver a funcionar o problema e 99% aqui. Dar debug do transform.rotation de um cilindro
     private float getRelativeAngle(Vector3 va, Vector3 vb){
         float angle = Vector3.Angle(va,vb);
         Vector3 cross = Vector3.Cross(va,vb);

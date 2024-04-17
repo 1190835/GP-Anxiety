@@ -7,7 +7,9 @@ public class PadlockCodeSpriteController : MonoBehaviour
 {
     public Sprite[] sprites = new Sprite[10];
     private int[] code;
-    // Start is called before the first frame update
+    // Este gameobject deve ter 5 child objects. 5 sprites. A imagem de cada child e atribuida
+    // de acordo com a combinacao do padlock que foi gerada no inicio do jogo
+    // Estas imagens sao guardadas aqui em sprites[] por ordem de 0->9
     void Start()
     {
         if(SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 5){

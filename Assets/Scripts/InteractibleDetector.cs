@@ -7,6 +7,8 @@ using UnityEngine;
 Esta classe define o comportamento que da cast de um raio na direcao da vista do jogador
 Este raio é usado para detetar se o jogador está a olhar para um objeto interagivel
 Quando o raio colide com um objeto interagivel, o jogador pode ativar o comportamento associado a esse objeto
+O objeto interagivel deve primeiro estar tagged como interactible no editor e tambem conter um script component que
+implemente a interface IInteractible com um metodo Interact()
 */
 public class InteractibleDetector : MonoBehaviour
 {
