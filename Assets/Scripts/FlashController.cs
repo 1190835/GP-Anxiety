@@ -10,9 +10,12 @@ public class FlashController : MonoBehaviour
     public GameObject flashButton;
     public float flashTimeout;
     private float flashCooldown = 2f;
+    private AudioSource _audioSource;
+    public AudioClip flashAudio;
     void Start(){
         //_input = GetComponent<StarterAssetsInputs>();
         flashTimeout=0f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class FlashController : MonoBehaviour
             anim.Play();
             flashTimeout=flashCooldown;
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().incrementFlashCount();
+            _audioSource.PlayOneShot(flashAudio);
         }
     }
 }
