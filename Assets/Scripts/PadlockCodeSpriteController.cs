@@ -12,10 +12,10 @@ public class PadlockCodeSpriteController : MonoBehaviour
     // Estas imagens sao guardadas aqui em sprites[] por ordem de 0->9
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 5){
+        if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 6){
             code=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode1;
         }
-        else if(SceneManager.GetActiveScene().buildIndex==4){
+        else if(SceneManager.GetActiveScene().buildIndex==5){
             code=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode2;
         }
         GameObject canvas = GetComponentInChildren<Canvas>().gameObject;

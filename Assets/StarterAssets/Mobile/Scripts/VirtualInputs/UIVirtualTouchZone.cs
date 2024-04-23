@@ -13,7 +13,7 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
 
     [Header("Settings")]
     public bool clampToMagnitude;
-    public float magnitudeMultiplier = 1f;
+    public float magnitudeMultiplier = 10f;
     public bool invertXOutputValue;
     public bool invertYOutputValue;
 
@@ -60,7 +60,7 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
         
         Vector2 outputPosition = ApplyInversionFilter(clampedPosition);
 
-        OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.deltaTime);
+        OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.fixedDeltaTime);
     }
 
     public void OnPointerUp(PointerEventData eventData)

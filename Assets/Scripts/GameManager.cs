@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("SFX").TryGetComponent<AudioSource>(out src);
 
         if(src!=null){
-            if(roomIdx==2){
+            if(roomIdx==3){
                 src.PlayOneShot(doorClose1);
             }
-            if(roomIdx==4){
+            if(roomIdx==5){
                 src.PlayOneShot(doorClose2);
             }
         }

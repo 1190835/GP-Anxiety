@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class DoorTriggerController : MonoBehaviour, IInteractible
 {
     public void Interact(){
-        if(SceneManager.GetActiveScene().buildIndex==4){
+        if(SceneManager.GetActiveScene().buildIndex==5){
             SceneManager.LoadScene("SideHallwayOtherworld");
         }
-        if(SceneManager.GetActiveScene().buildIndex==5){
+        if(SceneManager.GetActiveScene().buildIndex==6){
             SceneManager.LoadScene("MainHallwayOtherworld");
         }
     }
