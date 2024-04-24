@@ -59,8 +59,10 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
         Vector2 clampedPosition = ClampValuesToMagnitude(positionDelta);
         
         Vector2 outputPosition = ApplyInversionFilter(clampedPosition);
+        float scaleFactor = (float) 1600/Screen.width;
 
-        OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.fixedDeltaTime);
+        OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.deltaTime*scaleFactor);
+        Debug.Log(scaleFactor);
     }
 
     public void OnPointerUp(PointerEventData eventData)

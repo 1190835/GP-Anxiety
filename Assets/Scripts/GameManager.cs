@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Awake(){
         DontDestroyOnLoad(transform.gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Application.targetFrameRate = 100;
         GameObject.FindGameObjectWithTag("Music").GetComponent<AmbientMusicController>().updateBackgroundAudio(roomIdx);
         GeneratePadlockCodes();
     }

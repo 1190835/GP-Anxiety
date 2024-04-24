@@ -16,6 +16,7 @@ namespace StarterAssets
         public void VirtualLookInput(Vector2 virtualLookDirection)
         {
             starterAssetsInputs.LookInput(virtualLookDirection);
+            Debug.Log(virtualLookDirection.ToString());
         }
 
         public void VirtualInteractInput(bool virtualJumpState)
