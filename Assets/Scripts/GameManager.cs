@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public AudioClip doorClose1;
     public AudioClip doorClose2;
     public GameObject flashButton;
+    public string username;
     public int roomIdx;
     public bool hasKey = false;
     public bool hasCamera = false;
@@ -37,7 +38,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Update(){
-        gameTime+=Time.deltaTime;
+        if(roomIdx!=0){
+            gameTime+=Time.deltaTime;
+        }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         roomIdx=SceneManager.GetActiveScene().buildIndex;
@@ -53,6 +56,10 @@ public class GameManager : MonoBehaviour
                 src.PlayOneShot(doorClose2);
             }
         }
+    }
+
+    public void saveUsername(string name){
+        username=name;
     }
 
     private void GeneratePadlockCodes(){

@@ -12,11 +12,10 @@ public class AmbientMusicController : MonoBehaviour
     //Este dictionary mapeia o indice da Scene ao indice do som de background que deve ser reproduzido nessa sala
     //Essencialmente para evitar escrever um switch case que faria o mesmo
     private Dictionary<int, int> roomBgmMap = new Dictionary<int, int>{
-        {0,0},
         {1,0},
         {2,0},
         {3,0},
-        {4,1},
+        {4,0},
         {5,1},
         {6,1}
     };
@@ -30,10 +29,12 @@ public class AmbientMusicController : MonoBehaviour
     //Altera o audio clip apenas quando a musica da sala atual muda. Nao substitui a musica 1 pela musica 1, por exemplo.
     //Para transicionar de forma continua
     public void updateBackgroundAudio(int idx){
-        if(_audioSource.clip!=bgAudio[roomBgmMap[idx]]){
-            StopMusic();
-            _audioSource.clip=bgAudio[roomBgmMap[idx]];
-            PlayMusic();
+        if(idx!=0){
+            if(_audioSource.clip!=bgAudio[roomBgmMap[idx]]){
+                StopMusic();
+                _audioSource.clip=bgAudio[roomBgmMap[idx]];
+                PlayMusic();
+            }
         }
     }
 
