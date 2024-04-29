@@ -155,6 +155,7 @@ MonoBehaviour:
   doorClose1: {fileID: 8300000, guid: 7a53742f9d3653648b2ae052a71f747b, type: 3}
   doorClose2: {fileID: 8300000, guid: f392d9452d696ef4a8ad7ae88ee6fea9, type: 3}
   flashButton: {fileID: 0}
+  username: 
   roomIdx: 0
   hasKey: 0
   hasCamera: 0
