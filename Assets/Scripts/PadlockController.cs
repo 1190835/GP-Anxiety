@@ -16,7 +16,9 @@ public class PadlockController : MonoBehaviour
     //Este array guarda as rotations dos cilindros que correspondem a um certo digito estar virado para a camera
     //Por ordem numerica 0->9
     //Isto e essencial para saber que combinacao o jogador introduziu. Tende a deixar de funcionar randomly. N sei pq. Hj funciona
-    private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
+    //private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
+    //este puzzle deixou de funcionar out of nowhere, dps de dar debug descubri q as rotations mudaram para negativo. n sei pq. might acontecer outra vez
+    private float [] faceRotations = {72, 36, 0, -36, -72, -108, -144, 180, 144, 108};
     private int[] combination = {1,2,3,4,5};
     public int[] input = new int[5];
     //public bool gameEnd = false;
@@ -93,7 +95,7 @@ public class PadlockController : MonoBehaviour
     }
 
     private void checkCode(){
-        if(!Enumerable.SequenceEqual(input, combination)){
+        if(Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);

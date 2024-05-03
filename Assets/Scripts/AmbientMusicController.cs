@@ -17,7 +17,8 @@ public class AmbientMusicController : MonoBehaviour
         {3,0},
         {4,0},
         {5,1},
-        {6,1}
+        {6,1},
+        {7,1},
     };
     private void Awake()
     {
