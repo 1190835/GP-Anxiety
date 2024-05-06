@@ -40,10 +40,12 @@ public class PadlockController : MonoBehaviour
         if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
             timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime2;
             failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails2;
+            combination=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode2;
         }
         else{
             timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime1;
             failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails1;
+            combination=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode1;
         }
         
     }
