@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 47f11ffa9c8de5645a4d0ad3131064f5, type: 2}
     - target: {fileID: -4029196069745395902, guid: 5bcbaa4a08017ef41814774db0f22056, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1071359958148435772, guid: 5bcbaa4a08017ef41814774db0f22056, type: 3}
       propertyPath: m_Range
@@ -449,6 +449,10 @@ PrefabInstance:
     - target: {fileID: 1250601397874906564, guid: 5bcbaa4a08017ef41814774db0f22056, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1543697393184779195, guid: 5bcbaa4a08017ef41814774db0f22056, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3472778375830378061, guid: 5bcbaa4a08017ef41814774db0f22056, type: 3}
       propertyPath: m_IsActive
@@ -760,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &647343560
 Transform:
   m_ObjectHideFlags: 0
@@ -2104,7 +2108,7 @@ GameObject:
   - component: {fileID: 1553692120}
   m_Layer: 0
   m_Name: LockedDoorTrigger
-  m_TagString: Untagged
+  m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

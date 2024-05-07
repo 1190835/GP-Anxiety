@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void unlockCamera(){
         hasKey=true;
         hasCamera=true;
-        GameObject.FindGameObjectWithTag("Player").transform.Find("CameraHoldRoot").transform.Find("Photo").gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").transform.Find("PlayerCameraRoot").transform.Find("CameraHoldRoot").transform.Find("Photo").gameObject.SetActive(true);
     }
     public void saveFirstStageTime(){
         firstStageTime=gameTime;
@@ -106,5 +107,42 @@ public class GameManager : MonoBehaviour
     }
     public void showUI(){
         GameObject.FindGameObjectWithTag("UI").SetActive(true);
+    }
+
+    public void saveFinalMetrics(){
+        Metrics metrics = new Metrics(cameraClicks, gameTime, firstStageTime, ringTime1, ringTime2, padlockTime1, padlockTime2, ringFails1, ringFails2, padlockFails1, padlockFails2);
+        string json = JsonUtility.ToJson(metrics);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/MetricsData.json", json);
+    }
+}
+
+[System.Serializable]
+internal class Metrics
+{
+    public int cameraClicks;
+    public float gameTime;
+    public float firstStageTime;
+    public float ringTime1;
+    public float ringTime2;
+    public float padlockTime1;
+    public float padlockTime2;
+    public int ringFails1;
+    public int ringFails2;
+    public int padlockFails1;
+    public int padlockFails2;
+
+    public Metrics(int cameraClicks, float gameTime, float firstStageTime, float ringTime1, float ringTime2, float padlockTime1, float padlockTime2, int ringFails1, int ringFails2, int padlockFails1, int padlockFails2)
+    {
+        this.cameraClicks = cameraClicks;
+        this.gameTime = gameTime;
+        this.firstStageTime = firstStageTime;
+        this.ringTime1 = ringTime1;
+        this.ringTime2 = ringTime2;
+        this.padlockTime1 = padlockTime1;
+        this.padlockTime2 = padlockTime2;
+        this.ringFails1 = ringFails1;
+        this.ringFails2 = ringFails2;
+        this.padlockFails1 = padlockFails1;
+        this.padlockFails2 = padlockFails2;
     }
 }

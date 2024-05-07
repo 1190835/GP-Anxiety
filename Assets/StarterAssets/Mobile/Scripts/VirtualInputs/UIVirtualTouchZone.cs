@@ -62,7 +62,7 @@ public class UIVirtualTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandl
         float scaleFactor = (float) Screen.width/1600;
 
         OutputPointerEventValue(outputPosition * magnitudeMultiplier * Time.deltaTime*scaleFactor);
-        Debug.Log(scaleFactor);
+        //Debug.Log(scaleFactor);
     }
 
     public void OnPointerUp(PointerEventData eventData)
