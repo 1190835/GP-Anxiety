@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Palmmedia.ReportGenerator.Core.CodeAnalysis;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool hasKey = false;
     public bool hasCamera = false;
     [Header("Metrics")]
+    public string timestamp;
     public int cameraClicks =0;
     public float gameTime=0f;
     public float firstStageTime;
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 100;
         GameObject.FindGameObjectWithTag("Music").GetComponent<AmbientMusicController>().updateBackgroundAudio(roomIdx);
         GeneratePadlockCodes();
+        timestamp=DateTime.Now.ToString("yyyyMMddHHmmssffff");
     }
     void Start(){
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -110,8 +114,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void saveFinalMetrics(){
-        Metrics metrics = new Metrics(cameraClicks, gameTime, firstStageTime, ringTime1, ringTime2, padlockTime1, padlockTime2, ringFails1, ringFails2, padlockFails1, padlockFails2);
-        string json = JsonUtility.ToJson(metrics);
+        Metrics metrics = new Metrics(username, timestamp, cameraClicks, gameTime, firstStageTime, ringTime1, ringTime2, padlockTime1, padlockTime2, ringFails1, ringFails2, padlockFails1, padlockFails2);
+
+        string currentJson = System.IO.File.ReadAllText(Application.persistentDataPath + "/MetricsData.json");
+        Debug.Log(currentJson);
+        MetricsList metricsList = JsonUtility.FromJson<MetricsList>(currentJson);
+        metricsList._list.Add(metrics);
+        string json = JsonUtility.ToJson(metricsList);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/MetricsData.json", json);
     }
 }
@@ -119,6 +128,8 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 internal class Metrics
 {
+    public string username;
+    public string timestamp;
     public int cameraClicks;
     public float gameTime;
     public float firstStageTime;
@@ -131,8 +142,10 @@ internal class Metrics
     public int padlockFails1;
     public int padlockFails2;
 
-    public Metrics(int cameraClicks, float gameTime, float firstStageTime, float ringTime1, float ringTime2, float padlockTime1, float padlockTime2, int ringFails1, int ringFails2, int padlockFails1, int padlockFails2)
+    public Metrics(string username, string timestamp, int cameraClicks, float gameTime, float firstStageTime, float ringTime1, float ringTime2, float padlockTime1, float padlockTime2, int ringFails1, int ringFails2, int padlockFails1, int padlockFails2)
     {
+        this.username = username;
+        this.timestamp = timestamp;
         this.cameraClicks = cameraClicks;
         this.gameTime = gameTime;
         this.firstStageTime = firstStageTime;
@@ -145,4 +158,8 @@ internal class Metrics
         this.padlockFails1 = padlockFails1;
         this.padlockFails2 = padlockFails2;
     }
+}
+[System.Serializable]
+internal class MetricsList{
+    public List<Metrics> _list;
 }
