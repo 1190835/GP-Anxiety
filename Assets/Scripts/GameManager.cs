@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int roomIdx;
     public bool hasKey = false;
     public bool hasCamera = false;
+    public float anxTimer;
     [Header("Metrics")]
     public string timestamp;
     public int cameraClicks =0;
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 100;
         GameObject.FindGameObjectWithTag("Music").GetComponent<AmbientMusicController>().updateBackgroundAudio(roomIdx);
         GeneratePadlockCodes();
-        timestamp=DateTime.Now.ToString("yyyyMMddHHmmssffff");
+        timestamp=DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
     }
     void Start(){
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -45,6 +46,9 @@ public class GameManager : MonoBehaviour
     void Update(){
         if(roomIdx!=0){
             gameTime+=Time.deltaTime;
+        }
+        if(hasCamera && anxTimer>0){
+            anxTimer-=Time.deltaTime;
         }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour
         hasKey=true;
         hasCamera=true;
         GameObject.FindGameObjectWithTag("Player").transform.Find("PlayerCameraRoot").transform.Find("CameraHoldRoot").transform.Find("Photo").gameObject.SetActive(true);
+        anxTimer=90f;
     }
     public void saveFirstStageTime(){
         firstStageTime=gameTime;

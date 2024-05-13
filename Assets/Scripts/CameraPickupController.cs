@@ -7,11 +7,14 @@ public class CameraPickupController : MonoBehaviour, IInteractible
     public GameObject lockedDoorTrigger;
     public GameObject doorLoadTrigger;
     public GameObject padlockCodeSprites;
+    public GameObject timer;
     public void Interact(){
         //Give the player the camera
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().unlockCamera();
         //Save first stage time
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().saveFirstStageTime();
+
+        timer.SetActive(true);
 
         //Unlock door
         lockedDoorTrigger.SetActive(false);

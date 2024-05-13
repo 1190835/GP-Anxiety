@@ -13,7 +13,7 @@ public class RingController : MonoBehaviour
     //Numero de vezes que o jogador cometeu um erro
     public int failCounter;
     //Tempo minimo entre erros (para eliminar erros repetidos)
-    private float failCooldown = 1.5f;
+    private float failCooldown = 1f;
     //Contador do tempo entre erros
     public float failTimeout;
     //Tempo decorrido
@@ -41,7 +41,7 @@ public class RingController : MonoBehaviour
         transform.rotation=Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
 
         //Movimento do anel em world coordinates, nao em relacao a posicao/orientacao do anel
-        if(moveDirection!=Vector2.zero){
+        if(moveDirection!=Vector2.zero && failTimeout<0){
             //Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
             Vector3 m_Input = new Vector3(moveDirection.x, moveDirection.y,0);
             transform.Translate(m_Input*Time.deltaTime*10,Space.World);
