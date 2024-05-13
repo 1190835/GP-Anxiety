@@ -29,6 +29,8 @@ public class CameraPickupController : MonoBehaviour, IInteractible
             }
         }
 
+        GameObject.FindGameObjectWithTag("SFX").GetComponent<AnxietySFXController>().enabled = true;
+
         //Write Code on the Wall
         padlockCodeSprites.SetActive(true);
 

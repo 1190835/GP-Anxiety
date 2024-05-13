@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -115,12 +116,20 @@ public class GameManager : MonoBehaviour
     public void saveFinalMetrics(){
         Metrics metrics = new Metrics(username, timestamp, cameraClicks, gameTime, firstStageTime, ringTime1, ringTime2, padlockTime1, padlockTime2, ringFails1, ringFails2, padlockFails1, padlockFails2);
 
-        string currentJson = System.IO.File.ReadAllText(Application.persistentDataPath + "/MetricsData.json");
-        Debug.Log(currentJson);
-        MetricsList metricsList = JsonUtility.FromJson<MetricsList>(currentJson);
-        metricsList._list.Add(metrics);
-        string json = JsonUtility.ToJson(metricsList);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/MetricsData.json", json);
+        if(File.Exists(Application.persistentDataPath + "/MetricsData.json")){
+            string currentJson = System.IO.File.ReadAllText(Application.persistentDataPath + "/MetricsData.json");
+            Debug.Log(currentJson);
+            MetricsList metricsList = JsonUtility.FromJson<MetricsList>(currentJson);
+            metricsList._list.Add(metrics);
+            string json = JsonUtility.ToJson(metricsList);
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/MetricsData.json", json);
+        }
+        else{
+            MetricsList metricsList = new MetricsList();
+            metricsList._list.Add(metrics);
+            string json = JsonUtility.ToJson(metricsList);
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/MetricsData.json", json);
+        }
     }
 }
 
@@ -161,4 +170,8 @@ internal class Metrics
 [System.Serializable]
 internal class MetricsList{
     public List<Metrics> _list;
+
+    public MetricsList(){
+        _list = new List<Metrics>();
+    }
 }

@@ -5,19 +5,19 @@ using UnityEngine.EventSystems;
 public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // Distance of touch movement
-    [HideInInspector]
+
     public Vector2 TouchDist;
 
     // Previous position of touch
-    [HideInInspector]
+
     public Vector2 PointerOld;
 
     // Pointer ID for touch input
-    [HideInInspector]
+    
     protected int PointerId;
 
     // Indicates if the touch is pressed
-    [HideInInspector]
+    
     public bool Pressed;
 
     // Update is called once per frame
@@ -26,6 +26,9 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         // Update touch distance if pressed
         if (Pressed)
         {
+            Debug.Log(PointerId);
+            Debug.Log(Input.touches.Length);
+            Debug.Log(Input.touchCount);
             if (PointerId >= 0 && PointerId < Input.touches.Length)
             {
                 TouchDist = Input.touches[PointerId].position - PointerOld;
@@ -47,6 +50,7 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     // Called when a pointer is pressed down
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("pointer down"+eventData.pointerId);
         // Set pressed to true and update pointer information
         Pressed = true;
         PointerId = eventData.pointerId;
