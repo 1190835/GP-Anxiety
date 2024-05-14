@@ -1438,13 +1438,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7136280145678730, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
+      propertyPath: m_TagString
+      value: Interactible
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
       propertyPath: m_Name
       value: SideHallway
       objectReference: {fileID: 0}
     - target: {fileID: 999404285501708131, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
       propertyPath: m_TagString
-      value: Interactible
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5958438921693756439, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
       propertyPath: m_Range
@@ -1466,8 +1470,30 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: -5568371526223589888, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -7136280145678730, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438513758}
   m_SourcePrefab: {fileID: 100100000, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
+--- !u!1 &1438513757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7136280145678730, guid: a7a813a8a36a9bf4f973d61dd7e5adda, type: 3}
+  m_PrefabInstance: {fileID: 1438513756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438513758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438513757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3b6de845ea3d04a8ee98b966e003dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorLockedSFX: {fileID: 8300000, guid: e2a7b6ebf35108e4a8230bc7eb4c4f2e, type: 3}
+  audioSource: {fileID: 580792503}
 --- !u!1001 &1448485432
 PrefabInstance:
   m_ObjectHideFlags: 0

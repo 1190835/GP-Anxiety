@@ -527,6 +527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainHallwayOtherworld
       objectReference: {fileID: 0}
+    - target: {fileID: 1543646567026986294, guid: 92d80781d7e86de4fa0c90278bacdf84, type: 3}
+      propertyPath: m_TagString
+      value: Interactible
+      objectReference: {fileID: 0}
     - target: {fileID: 2766212503428324877, guid: 92d80781d7e86de4fa0c90278bacdf84, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -543,6 +547,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1b81d6a7f02102745aa70ed98d9c63a9, type: 2}
+    - target: {fileID: 5802508653958326729, guid: 92d80781d7e86de4fa0c90278bacdf84, type: 3}
+      propertyPath: m_TagString
+      value: Interactible
+      objectReference: {fileID: 0}
     - target: {fileID: 7349655231179780853, guid: 92d80781d7e86de4fa0c90278bacdf84, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -598,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorLockedSFX: {fileID: 8300000, guid: e2a7b6ebf35108e4a8230bc7eb4c4f2e, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 537368999}
 --- !u!114 &430392279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorLockedSFX: {fileID: 8300000, guid: e2a7b6ebf35108e4a8230bc7eb4c4f2e, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 537368999}
 --- !u!1 &430392280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7136280145678730, guid: 92d80781d7e86de4fa0c90278bacdf84, type: 3}
