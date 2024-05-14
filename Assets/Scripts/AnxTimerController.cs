@@ -10,8 +10,10 @@ public class AnxTimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().anxTimer;
-        string str = TimeSpan.FromSeconds((double)time).ToString(@"m\:ss");
-        this.gameObject.GetComponent<Text>().text = str;
+        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            time = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().anxTimer;
+            string str = TimeSpan.FromSeconds((double)time).ToString(@"m\:ss");
+            this.gameObject.GetComponent<Text>().text = str;
+        }
     }
 }
