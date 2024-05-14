@@ -24,27 +24,54 @@ public class InteractibleDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(camera!=null){
-            RaycastHit hit;
-            Vector3 fwd = camera.transform.TransformDirection(Vector3.forward)*20;
-            Debug.DrawRay(camera.transform.position,fwd,Color.green);
-            if(Physics.Raycast(camera.transform.position,fwd,out hit, 20)){
-                if(hit.collider.tag=="Interactible"){
-                    //Debug.Log(hit.collider.name);
-                    interactIcon.SetActive(true);
-                    interactButton.SetActive(true);
-                    // if(Input.GetKey(KeyCode.Mouse0)){
-                    //     hit.collider.GetComponent<IInteractible>().Interact();
-                    // }
-                    if(_input.interact){
+        //CODIGO DO SISTEMA DE INTERACAO ANTIGO
+        
+        // if(camera!=null){
+        //     RaycastHit hit;
+        //     Vector3 fwd = camera.transform.TransformDirection(Vector3.forward)*20;
+        //     Debug.DrawRay(camera.transform.position,fwd,Color.green);
+        //     if(Physics.Raycast(camera.transform.position,fwd,out hit, 20)){
+        //         if(hit.collider.tag=="Interactible"){
+        //             //Debug.Log(hit.collider.name);
+        //             interactIcon.SetActive(true);
+        //             interactButton.SetActive(true);
+        //             // if(Input.GetKey(KeyCode.Mouse0)){
+        //             //     hit.collider.GetComponent<IInteractible>().Interact();
+        //             // }
+        //             if(_input.interact){
+        //                 hit.collider.GetComponent<IInteractible>().Interact();
+        //                 //failsafe. em casos onde interagir com o objeto faz com que o objeto desapareca (collectibles), o botao de interagir desaparece -> n ha button up event -> interact fica stuck em true. isto forca o interact a mudar para false
+        //                 _input.InteractInput(false);
+        //             }
+        //         }
+        //         else{
+        //             interactIcon.SetActive(false);
+        //             interactButton.SetActive(false);
+        //         }
+        //     }
+        // }
+
+        // Iterate over all touches
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            // Check if the touch phase is began
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                // Get the touch position and cast a ray from it
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                RaycastHit hit;
+
+                // Check if the ray hits any collider
+                if (Physics.Raycast(ray, out hit, 40)) //layerMask
+                {
+                    // Get the game object that was hit
+                    GameObject hitObject = hit.collider.gameObject;
+
+                    // Check if the hit object has the "Coin" tag
+                    if (hitObject.tag == "Interactible")
+                    {
                         hit.collider.GetComponent<IInteractible>().Interact();
-                        //failsafe. em casos onde interagir com o objeto faz com que o objeto desapareca (collectibles), o botao de interagir desaparece -> n ha button up event -> interact fica stuck em true. isto forca o interact a mudar para false
-                        _input.InteractInput(false);
                     }
-                }
-                else{
-                    interactIcon.SetActive(false);
-                    interactButton.SetActive(false);
                 }
             }
         }
