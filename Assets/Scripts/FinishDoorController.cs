@@ -9,7 +9,7 @@ public class FinishDoorController : MonoBehaviour, IInteractible
         GameManager gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if(gameManager.hasCamera){
             gameManager.saveFinalMetrics();
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("EndScreen");
         }
     }
 }

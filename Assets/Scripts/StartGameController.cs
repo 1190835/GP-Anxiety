@@ -20,4 +20,8 @@ public class StartGameController : MonoBehaviour
             SceneManager.LoadScene("MainHallway");
         }
     }
+
+    public void startTutorial(){
+        SceneManager.LoadScene("RingTutorial");
+    }
 }

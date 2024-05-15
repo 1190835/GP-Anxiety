@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if(roomIdx!=0){
             gameTime+=Time.deltaTime;
         }
-        if(hasCamera && anxTimer>0){
+        if(hasCamera){
             anxTimer-=Time.deltaTime;
             secondStageTime+=Time.deltaTime;
         }
@@ -82,11 +82,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void GeneratePadlockCodes(){
+        //originalmente haviam 2 codigos separados, esta foi a forma mais rapida de adaptar para so usar um sem alterar o resto da logica do jogo
         Random rnd = new Random();
         for(int i=0;i<padlockCode1.Length;i++){
             padlockCode1[i]=rnd.Next(9);
-            padlockCode2[i]=rnd.Next(9);
+            //padlockCode2[i]=rnd.Next(9);
         }
+        Array.Copy(padlockCode1,padlockCode2,padlockCode1.Length);
     }
 
     public void unlockCamera(){
