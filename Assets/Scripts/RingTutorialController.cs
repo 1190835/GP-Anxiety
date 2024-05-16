@@ -90,8 +90,8 @@ public class RingTutorialController : MonoBehaviour
         
     }
 
-    public void returnToMainMenu(){
-        SceneManager.LoadScene("MainMenu");
+    public void moveToPadlockTutorial(){
+        SceneManager.LoadScene("PadlockTutorial");
     }
 
     public void VirtualMoveInput(Vector2 virtualMoveDirection){

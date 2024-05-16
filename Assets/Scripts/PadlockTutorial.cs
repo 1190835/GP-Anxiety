@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PadlockController : MonoBehaviour
+public class PadlockTutorial : MonoBehaviour
 {
     public GameObject[] rounds;
 
@@ -18,7 +18,7 @@ public class PadlockController : MonoBehaviour
     //private float [] faceRotations = {-72,  -36, 0, 36, 72, 108, 144, -180, -144, -108};
     //este puzzle deixou de funcionar out of nowhere, dps de dar debug descubri q as rotations mudaram para negativo. n sei pq. might acontecer outra vez
     private float [] faceRotations = {72, 36, 0, -36, -72, -108, -144, 180, 144, 108};
-    private int[] combination = {1,2,3,4,5};
+    private int[] combination = {2,8,5,4,5};
     public int[] input = new int[5];
     //public bool gameEnd = false;
     public bool pressed = false;
@@ -26,26 +26,13 @@ public class PadlockController : MonoBehaviour
 
     //Padlock open animation
     public Animator anim;
-    public AudioClip doorOpenSFX;
     public AudioClip padlockUnlockSFX;
     public AudioClip failSFX;
     public AudioSource audioSource;
     public AudioSource padlockAudioSource;
-    public int failCounter=0;
-    public float timer=0f;
 
     //No caso do jogador estar a entrar no puzzle pela segunda vez, retomar o progresso salvo anteriormente
     void Start(){
-        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
-            timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime2;
-            failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails2;
-            combination=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode2;
-        }
-        else{
-            timer = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockTime1;
-            failCounter= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockFails1;
-            combination=GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().padlockCode1;
-        }
         
     }
 
@@ -65,7 +52,6 @@ public class PadlockController : MonoBehaviour
         if(stoppedIdx>4){
             checkCode();
         }
-        timer+=Time.deltaTime;
     }
 
 
@@ -99,43 +85,30 @@ public class PadlockController : MonoBehaviour
         if(Enumerable.SequenceEqual(input, combination)){
             Debug.Log("Correct code");
             anim.SetBool("Open",true);
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
-            this.enabled=false;
             padlockAudioSource.PlayOneShot(padlockUnlockSFX);
-            audioSource.PlayOneShot(doorOpenSFX);
-            Invoke("ChangeScene",doorOpenSFX.length);
+            Invoke("reset",1);
         }
         else{
             stoppedIdx=0;
             for(int i =0; i<input.Length;i++){
                 input[i]=-1;
             }
-            failCounter++;
             audioSource.PlayOneShot(failSFX);
         }
     }
-    private void ChangeScene(){
-        Debug.Log("changing scenes");
-        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
-            SceneManager.LoadScene("SideHallwayOtherworld");
+
+    private void reset(){
+        anim.SetBool("Open", false);
+        stoppedIdx=0;
+        for(int i =0; i<input.Length;i++){
+            input[i]=-1;
         }
-        else{
-            SceneManager.LoadScene("Room");
-        }
-        //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
     public void VirtualPressInput(bool virtualPressed){
         pressed=virtualPressed;
     }
-    public void returnToPreviousScene(){
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().savePadlockMetrics(failCounter,timer);
-        Debug.Log("changing scenes");
-        if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
-            SceneManager.LoadScene("Room");
-        }
-        else{
-            SceneManager.LoadScene("SideHallway");
-        }
+    public void returnToMainMenu(){
+        SceneManager.LoadScene("MainMenu");
     }
 }

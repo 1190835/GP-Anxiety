@@ -1293,6 +1293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1670907440}
   - component: {fileID: 1670907439}
+  - component: {fileID: 1670907441}
   m_Layer: 0
   m_Name: SFX
   m_TagString: SFX
@@ -1411,6 +1412,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1670907441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670907438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f46eef5f4c7f134fafab6b1758ecd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartbeatAudio: {fileID: 8300000, guid: 221f57d8ed9ee4a4fa7fbdffe335f4ee, type: 3}
+  varietyAudio:
+  - {fileID: 8300000, guid: cf687f049ec32ee4099646de88d6a7b0, type: 3}
+  - {fileID: 8300000, guid: 02f8717192e67b542a110c02275ef4fa, type: 3}
+  - {fileID: 8300000, guid: 4e7dde61d789c0a488ff19bca2ca3c94, type: 3}
 --- !u!1 &1851308158
 GameObject:
   m_ObjectHideFlags: 0

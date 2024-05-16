@@ -12,12 +12,15 @@ public class AnxietySFXController : MonoBehaviour
     //timer para determinar quando reproduzir o som do batimento cardiaco outra vez
     private float heartbeatTimer;
     //tempo entre efeitos sonoros aleatorios
-    private float sfxCooldown = 5f;
+    private float sfxCooldown = 7f;
     //timer para determinar quando reproduzir os efeitos sonoros aleatorios
     private float sfxTimer;
     private AudioSource _audioSource;
 
     void Start(){
+        if(!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
+            this.enabled=false;
+        }
         heartbeatTimer=0;
         sfxTimer=0;
         _audioSource = GetComponent<AudioSource>();
