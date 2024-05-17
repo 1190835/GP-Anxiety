@@ -28,7 +28,7 @@ public class InteractibleDetector : MonoBehaviour
         
         if(camera!=null){
             RaycastHit hit;
-            Vector3 fwd = camera.transform.TransformDirection(Vector3.forward)*20;
+            Vector3 fwd = camera.transform.TransformDirection(Vector3.forward);
             Debug.DrawRay(camera.transform.position,fwd,Color.green);
             if(Physics.Raycast(camera.transform.position,fwd,out hit, 40)){
                 if(hit.collider.tag=="Interactible"){
@@ -48,6 +48,10 @@ public class InteractibleDetector : MonoBehaviour
                     interactIcon.SetActive(false);
                     //interactButton.SetActive(false);
                 }
+            }
+            else{
+                //se n colidir com nenhum object tem q ficar false tb
+                interactIcon.SetActive(false);
             }
         }
 

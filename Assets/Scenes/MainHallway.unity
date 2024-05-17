@@ -133,7 +133,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7136280145678730, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
   m_PrefabInstance: {fileID: 721647280}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &103505978
+--- !u!114 &103505973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,9 +142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 103505972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db340dec72ae38143a055a21dc81627e, type: 3}
+  m_Script: {fileID: 11500000, guid: ef3b6de845ea3d04a8ee98b966e003dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorLockedSFX: {fileID: 8300000, guid: 52895f5bc18c54e42bed4700ce1e7514, type: 3}
+  audioSource: {fileID: 2078516826}
 --- !u!1 &169246027
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +574,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -7136280145678730, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 103505978}
+      addedObject: {fileID: 103505973}
   m_SourcePrefab: {fileID: 100100000, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
 --- !u!1 &734628957
 GameObject:
@@ -611,8 +613,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.253807, y: 5.3763523, z: 1}
-  m_Center: {x: -5.0288506, y: 0.12857342, z: 0}
+  m_Size: {x: 12.322235, y: 10.893424, z: 1}
+  m_Center: {x: -5.0839386, y: 2.8871093, z: 0}
 --- !u!4 &734628959
 Transform:
   m_ObjectHideFlags: 0

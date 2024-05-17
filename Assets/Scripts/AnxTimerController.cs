@@ -17,7 +17,7 @@ public class AnxTimerController : MonoBehaviour
                 str = "-"+str;
                 this.gameObject.GetComponent<Text>().color = Color.red;
             }
-            this.gameObject.GetComponent<Text>().text = str;
+            //this.gameObject.GetComponent<Text>().text = str;
         }
     }
 }
