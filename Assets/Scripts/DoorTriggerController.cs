@@ -10,7 +10,7 @@ public class DoorTriggerController : MonoBehaviour, IInteractible
             SceneManager.LoadScene("SideHallwayOtherworld");
         }
         if(SceneManager.GetActiveScene().buildIndex==6){
-            SceneManager.LoadScene("MainHallwayOtherworld");
+            SceneManager.LoadScene("AnxMainHallwayOtherworld");
         }
     }
 }

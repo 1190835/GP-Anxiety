@@ -97,7 +97,7 @@ public class RingController : MonoBehaviour
     private void ChangeScene(){
         Debug.Log("changing scenes");
         if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().hasCamera){
-            SceneManager.LoadScene("MainHallwayOtherworld");
+            SceneManager.LoadScene("AnxMainHallwayOtherworld");
         }
         else{
             SceneManager.LoadScene("SideHallway");

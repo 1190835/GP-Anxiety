@@ -2391,6 +2391,7 @@ MonoBehaviour:
   bgAudio:
   - {fileID: 8300000, guid: 2c1f9398d294b744f99087cfafe8a1fe, type: 3}
   - {fileID: 8300000, guid: b2b87284cc109d9449d2eb2ef3e919da, type: 3}
+  - {fileID: 8300000, guid: b1dab6c138b4e5549af96e43a4db94c5, type: 3}
 --- !u!4 &1688633992
 Transform:
   m_ObjectHideFlags: 0
