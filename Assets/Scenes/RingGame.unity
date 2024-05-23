@@ -902,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475312012745311023, guid: c82978c3789dad44da354dc354c782b2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4767772227563435448, guid: c82978c3789dad44da354dc354c782b2, type: 3}
       propertyPath: handleRect
@@ -1142,7 +1142,7 @@ PrefabInstance:
     - target: {fileID: -8196204102522259480, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1ed18def31f0c7c43819010faffd157e, type: 2}
+      objectReference: {fileID: 2100000, guid: 13bb2ece864900e4da733faa402b0683, type: 2}
     - target: {fileID: -4889201344145374300, guid: f228ff4ca1ccc3b43a628015b6a41a6a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.16
@@ -1991,6 +1991,7 @@ GameObject:
   - component: {fileID: 2075538620}
   - component: {fileID: 2075538623}
   - component: {fileID: 2075538625}
+  - component: {fileID: 2075538626}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -2119,6 +2120,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2075538626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075538619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740c7abbf5d3fcf4691095011dcdc74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.02
+  moveDir: {x: 0, y: 0}
 --- !u!1 &2145799992
 GameObject:
   m_ObjectHideFlags: 0

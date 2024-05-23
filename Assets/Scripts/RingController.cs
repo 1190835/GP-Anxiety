@@ -21,10 +21,12 @@ public class RingController : MonoBehaviour
     public AudioClip doorOpenSFX;
     public AudioClip failSFX;
     public AudioSource audioSource;
+    private RingMouse ringMouse;
 
     public Vector2 moveDirection;
     void Start()
     {
+        ringMouse=GetComponent<RingMouse>();
         startPosition=transform.position;
         startRotation=transform.rotation;
         Cursor.lockState=CursorLockMode.Locked;
@@ -40,6 +42,7 @@ public class RingController : MonoBehaviour
         //Bloquear a rotacao do anel no eixo X
         transform.rotation=Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
 
+        moveDirection=ringMouse.moveDir;
         //Movimento do anel em world coordinates, nao em relacao a posicao/orientacao do anel
         if(moveDirection!=Vector2.zero && failTimeout<0){
             //Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
@@ -105,7 +108,7 @@ public class RingController : MonoBehaviour
         //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().showUI();
     }
 
-    public void VirtualMoveInput(Vector2 virtualMoveDirection){
-        moveDirection=virtualMoveDirection;
-    }
+    // public void VirtualMoveInput(Vector2 virtualMoveDirection){
+    //     moveDirection=virtualMoveDirection;
+    // }
 }

@@ -55,7 +55,9 @@ public class GameManager : MonoBehaviour
             gameTime+=Time.deltaTime;
         }
         if(hasCamera){
-            anxTimer-=Time.deltaTime;
+            if(anxTimer>=0){
+                anxTimer-=Time.deltaTime;
+            }
             secondStageTime+=Time.deltaTime;
         }
     }
