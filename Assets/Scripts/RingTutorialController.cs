@@ -16,6 +16,7 @@ public class RingTutorialController : MonoBehaviour
     public AudioClip doorOpenSFX;
     public AudioClip failSFX;
     public AudioSource audioSource;
+    private RingMouse ringMouse;
 
     public Vector2 moveDirection;
 
@@ -31,6 +32,7 @@ public class RingTutorialController : MonoBehaviour
     }
     void Start()
     {
+        ringMouse=GetComponent<RingMouse>();
         startPosition=transform.position;
         startRotation=transform.rotation;
         Cursor.lockState=CursorLockMode.Locked;
@@ -43,11 +45,12 @@ public class RingTutorialController : MonoBehaviour
         //Bloquear a rotacao do anel no eixo X
         transform.rotation=Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
 
+        moveDirection=ringMouse.moveDir;
         //Movimento do anel em world coordinates, nao em relacao a posicao/orientacao do anel
         if(moveDirection!=Vector2.zero && failTimeout<0){
             //Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
             Vector3 m_Input = new Vector3(moveDirection.x, moveDirection.y,0);
-            transform.Translate(m_Input*Time.deltaTime*10,Space.World);
+            transform.Translate(m_Input*Time.deltaTime,Space.World);
             //Debug.Log(m_Input.ToString());
         }
 
@@ -94,7 +97,7 @@ public class RingTutorialController : MonoBehaviour
         SceneManager.LoadScene("PadlockTutorial");
     }
 
-    public void VirtualMoveInput(Vector2 virtualMoveDirection){
-        moveDirection=virtualMoveDirection;
-    }
+    // public void VirtualMoveInput(Vector2 virtualMoveDirection){
+    //     moveDirection=virtualMoveDirection;
+    // }
 }

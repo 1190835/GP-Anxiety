@@ -47,7 +47,7 @@ public class RingController : MonoBehaviour
         if(moveDirection!=Vector2.zero && failTimeout<0){
             //Vector3 m_Input = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0);
             Vector3 m_Input = new Vector3(moveDirection.x, moveDirection.y,0);
-            transform.Translate(m_Input*Time.deltaTime*10,Space.World);
+            transform.Translate(m_Input*Time.deltaTime,Space.World);
             //Debug.Log(m_Input.ToString());
         }
 

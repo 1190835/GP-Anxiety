@@ -63,8 +63,12 @@ public class RingMouse : MonoBehaviour
 
         }
 
+        float scaleFactor = (float) Screen.width/1600;
         mouseX *= mouseSensitivity;
         mouseY *= mouseSensitivity;
+        
+        mouseX *= scaleFactor;
+        mouseY *= scaleFactor;
 
         moveDir=new Vector2(mouseX,mouseY);
     }

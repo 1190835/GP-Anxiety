@@ -16,13 +16,13 @@ public class AnxTimerController : MonoBehaviour
             if(time<0){
                 str = "-"+str;
                 this.gameObject.GetComponent<Text>().color = Color.red;
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().saveFinalMetrics();
                 Invoke("EndGame",1f);
             }
             this.gameObject.GetComponent<Text>().text = str;
         }
     }
     private void EndGame(){
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().saveFinalMetrics();
         SceneManager.LoadScene("Hell");
     }
 }
